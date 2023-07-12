@@ -13,7 +13,7 @@ from flask import Flask
 
 from flask_redis import FlaskRedis
 
-from celery2 import celery, preprocessing_task
+from celery2 import celery
 
 app = Flask(__name__)
 
@@ -23,7 +23,6 @@ redis_process = subprocess.Popen(['redis-server'])
 command = "rabbitmq-server"
 process = subprocess.Popen(command, shell=True)
 time.sleep(5)
-
 
 def shutdown_rabbitmq():
     command2 = 'rabbitmqctl shutdown -n rabbit@mamba-Aspire-A515-52G'
@@ -40,6 +39,7 @@ def handle_sigint(signum, frame):
 
 
 signal.signal(signal.SIGINT, handle_sigint)
+
 """
 
 @app.route('/')
@@ -50,10 +50,6 @@ def preprocessing():
             result = x.get()
         return jsonify(result)
 
-def workers_starting():
-    Wcommand = "sudo /home/mamba/PycharmProjects/flaskProject/venv/bin/celery multi start worker1 worker2 worker3 -A sedano --concurrency=2"
-    subprocess.run(Wcommand, shell=True)
-
 
 def start_flask_app():
     port = 5001
@@ -62,14 +58,9 @@ def start_flask_app():
 
 if __name__ == "__main__":
     flask_thread = Thread(target=start_flask_app)
-    #workers_thread = Thread(target=workers_starting)
-
-    #workers_thread.start()
     flask_thread.start()
-
     flask_thread.join()
-    #workers_thread.join()
 
-
-
-# 1 terminale: sudo /home/mamba/PycharmProjects/tesi/venv/bin/python hopelessTry.py
+# 1 terminale: redis-server
+#2 terminale sudo rabbitmqctl shutdown -n rabbit@mamba-Aspire-A515-52G ; sudo rabbitmq-server
+# 2 terminale: sudo /home/mamba/PycharmProjects/tesi/venv/bin/python hopelessTry.py

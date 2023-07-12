@@ -1,0 +1,145 @@
+for VirtualWorker:
+
+cd /home/mamba/Scrivania/
+
+ssh -i "chiavi_per_tesi.pem" ubuntu@...
+
+sudo apt update
+
+sudo apt install python3-pip
+
+pip3 install virtualenv
+
+sudo apt install python3-virtualenv
+
+mkdir home/
+
+mkdir home/PycharmProjects/
+
+mkdir home/PycharmProjects/tesi
+
+cd home/PycharmProjects/tesi
+
+virtualenv venv
+
+source venv/bin/activate
+
+pip install flask celery redis rabbitmq
+
+sudo apt install redis-server rabbitmq-server
+
+cd /etc
+
+ sudo chmod 777 redis
+
+ cd redis
+
+sudo chmod 777 redis.conf
+
+ nano redis.conf
+
+ -) commenta la riga bind 127.0.0.1::1
+ -) protected-mode no
+
+ cd
+
+ cd home/PycharmProjects/tesi/
+
+touch app.py
+
+nano app.py
+
+app.py<< temp-app.py
+
+redis-cli PING (check)
+
+rabbitmq-server(vai a prendere il rabbit@...)
+
+sudo rabbitmqctl shutdown -n rabbit@...
+
+sudo rabbitmq-plugins enable rabbitmq_management
+
+sudo rabbitmq-server
+
+#altro terminale
+
+cd /home/mamba/Scrivania/
+
+ssh -i "chiavi_per_tesi.pem" ubuntu@...
+
+sudo rabbitmqctl add_user BlackMamba Kobe
+
+sudo rabbitmqctl set_user_tags BlackMamba administrator
+
+sudo rabbitmqctl set_permissions -p / BlackMamba ".*" ".*" ".*"
+
+celery -A app worker --loglevel=info --concurrency=4
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+for VirtualProxy:
+
+cd /home/mamba/Scrivania/
+
+ssh -i "chiavi_per_tesi.pem" ubuntu@ec2-13-48-44-122.eu-north-1.compute.amazonaws.com
+
+sudo apt update
+
+sudo apt install python3-pip
+
+pip3 install virtualenv
+
+sudo apt install python3-virtualenv
+
+mkdir home/
+
+mkdir home/PycharmProjects/
+
+mkdir home/PycharmProjects/tesi
+
+cd home/PycharmProjects/tesi
+
+virtualenv venv
+
+source venv/bin/activate
+
+pip install redis rabbitmq
+
+sudo apt install redis-server rabbitmq-server
+
+cd /etc
+
+ sudo chmod 777 redis
+
+ cd redis
+
+sudo chmod 777 redis.conf
+
+ nano redis.conf
+
+ -) commenta la riga bind 127.0.0.1::1
+ -) protected-mode no
+
+redis-cli PING (check)
+
+rabbitmq-server(vai a prendere il rabbit@ip-172-31-34-218 )
+
+sudo rabbitmqctl shutdown -n rabbit@ip-172-31-34-218
+
+sudo rabbitmq-plugins enable rabbitmq_management
+
+sudo rabbitmq-server
+
+#altro terminale
+
+cd /home/mamba/Scrivania/
+
+ssh -i "chiavi_per_tesi.pem" ubuntu@ec2-13-48-44-122.eu-north-1.compute.amazonaws.com
+
+sudo rabbitmqctl add_user BlackMamba Kobe
+
+sudo rabbitmqctl set_user_tags BlackMamba administrator
+
+sudo rabbitmqctl set_user_tags BlackMamba administrator
+
+sudo lsof -i :5672(Check)

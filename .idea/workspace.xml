@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="feded33f-b764-4f64-ba19-9645385a2597" name="Changes" comment="another step" />
+    <list default="true" id="feded33f-b764-4f64-ba19-9645385a2597" name="Changes" comment="another step">
+      <change afterPath="$PROJECT_DIR$/temp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/celery2.py" beforeDir="false" afterPath="$PROJECT_DIR$/celery2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/dump.rdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hopelessTry.py" beforeDir="false" afterPath="$PROJECT_DIR$/hopelessTry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/redis-stable/redis.conf" beforeDir="false" afterPath="$PROJECT_DIR$/redis-stable/redis.conf" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,7 +69,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.app">
+  <component name="RunManager" selected="Flask server.tesi">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="tesi" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -98,7 +106,23 @@
       <option name="launchJavascriptDebuger" value="false" />
       <method v="2" />
     </configuration>
+    <configuration name="tesi" type="Python.FlaskServer">
+      <module name="tesi" />
+      <option name="target" value="$PROJECT_DIR$/app.py" />
+      <option name="targetType" value="PATH" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <method v="2" />
+    </configuration>
     <list>
+      <item itemvalue="Flask server.tesi" />
       <item itemvalue="Flask server.Flask" />
       <item itemvalue="Python.app" />
     </list>
@@ -138,6 +162,7 @@
       <workItem from="1689153822041" duration="366000" />
       <workItem from="1689154816038" duration="207000" />
       <workItem from="1689155224732" duration="516000" />
+      <workItem from="1689183276577" duration="1380000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
