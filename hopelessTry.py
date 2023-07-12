@@ -69,3 +69,4 @@ if __name__ == "__main__":
 
     flask_thread.join()
     #workers_thread.join()
+# 1 terminale: sudo /home/mamba/PycharmProjects/tesi/venv/bin/python hopelessTry.py
