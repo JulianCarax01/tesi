@@ -8,6 +8,8 @@ sudo apt update
 
 sudo apt install python3-pip
 
+sudo apt install redis
+
 pip3 install virtualenv
 
 sudo apt install python3-virtualenv
@@ -73,6 +75,10 @@ sudo rabbitmqctl set_user_tags BlackMamba administrator
 
 sudo rabbitmqctl set_permissions -p / BlackMamba ".*" ".*" ".*"
 
+ cd home/PycharmProjects/tesi/
+
+ source venv/bin/activate
+
 celery -A app worker --loglevel=info --concurrency=4
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -86,6 +92,8 @@ ssh -i "chiavi_per_tesi.pem" ubuntu@ec2-13-48-44-122.eu-north-1.compute.amazonaw
 sudo apt update
 
 sudo apt install python3-pip
+
+sudo apt install redis
 
 pip3 install virtualenv
 

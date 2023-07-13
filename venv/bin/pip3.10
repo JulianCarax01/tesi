@@ -1,4 +1,4 @@
-#!/home/mamba/PycharmProjects/tesi/venv/bin/python3.11
+#!/home/mamba/PycharmProjects/tesi/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

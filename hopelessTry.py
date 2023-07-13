@@ -45,7 +45,7 @@ signal.signal(signal.SIGINT, handle_sigint)
 @app.route('/')
 def preprocessing():
     with app.app_context():
-        x = celery.send_task('app.preprocessing_task', args=(1,))
+        x = celery.send_task('app.preprocessing_task', args=(3,))
         with allow_join_result():
             result = x.get()
         return jsonify(result)

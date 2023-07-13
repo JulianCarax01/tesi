@@ -1,26 +1,20 @@
-# before running the server you need to run the RabbitMq broker(You could need to stop the previous rabbitMq broker
-# running: "             sudo rabbitmqctl shutdown -n rabbit@mamba-Aspire-A515-52G            "(maybe another node is used instead of
-# mamba-Aspire-A515-52G)): "         sudo rabbitmq-server           "
-# The next step is to run the worker celery: "         celery -A sedano worker --loglevel=info             "
-# Last but not least you can run the server with: "            flask run
-#
+# sudo rabbitmqctl shutdown -n rabbit@mamba-Aspire-A515-52G
+# sudo rabbitmq-server           "
+# celery -A sedano worker --loglevel=info
 # sudo /home/mamba/PycharmProjects/flaskProject/venv/bin/celery multi start worker1 worker2 worker3 -A sedano --concurrency=2 --logfile=/home/mamba/Scrivania/logFile
 # sudo /home/mamba/PycharmProjects/flaskProject/venv/bin/celery multi stop worker...
-#
-#
-# # pyamqp://guest@localhost//
-#
-# # amqp://guest@localhost//
+# --logfile=/home/mamba/Scrivania/logFile
 
 
 import subprocess
 import time
 import signal
 import os
+import pandas
 
 from threading import Thread
 
-from celery.result import allow_join_result
+# from celery.result import allow_join_result
 
 from flask import jsonify
 
@@ -37,6 +31,8 @@ redis_process = subprocess.Popen(['redis-server'])
 command = "rabbitmq-server"
 process = subprocess.Popen(command, shell=True)
 time.sleep(5)
+dataset = pandas.read_csv("dataset-3.tsv", sep="\t")
+dataset_list = dataset.values.tolist()
 
 
 def shutdown_rabbitmq():
@@ -48,32 +44,36 @@ def handle_sigint(signum, frame):
     process.terminate()
     process.wait()
     shutdown_rabbitmq()
-    closeCeleryWorkerCommand = "sudo /home/mamba/PycharmProjects/flaskProject/venv/bin/celery multi stop worker1 worker2 worker3"
+    closeCeleryWorkerCommand = "sudo /home/mamba/PycharmProjects/flaskProject/venv/bin/celery multi stop worker1 worker2 worker3 worker4"
     subprocess.run(closeCeleryWorkerCommand, shell=True)
     os._exit(0)
 
 
 signal.signal(signal.SIGINT, handle_sigint)
 
+receiver = "alexandros0117@gmail.com"
+
 
 @app.route('/')
 def preprocessing():
     with app.app_context():
-        x = celery.send_task('sedano.preprocessing_task', args=(1,))
+        celery.send_task('sedano.preprocessing_task', args=(dataset_list, receiver,))
+        return jsonify("ok")
+
+
+"""
+@app.route('/')
+def preprocessing():
+    with app.app_context():
+        x = celery.send_task('sedano.preprocessing_task', args=(dataset_list,))
         with allow_join_result():
             result = x.get()
         return jsonify(result)
-
-
-"""
-def start_celery_worker1():
-    celery.worker_main(['worker', '--loglevel=info', '-n', 'worker1'])
 """
 
-"""--logfile=/home/mamba/Scrivania/logFile"""
 
 def workers_starting():
-    Wcommand = "sudo /home/mamba/PycharmProjects/flaskProject/venv/bin/celery multi start worker1 worker2 worker3 -A sedano --concurrency=2"
+    Wcommand = "sudo /home/mamba/PycharmProjects/flaskProject/venv/bin/celery multi start worker1 worker2 worker3 worker4 -A sedano --concurrency=2"
     subprocess.run(Wcommand, shell=True)
 
 
