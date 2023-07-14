@@ -26,7 +26,7 @@ virtualenv venv
 
 source venv/bin/activate
 
-pip install flask celery redis rabbitmq
+pip install flask celery redis rabbitmq pandas scipy pyyaml
 
 sudo apt install redis-server rabbitmq-server
 

@@ -1,8 +1,3 @@
-import subprocess
-import time
-import signal
-import os
-
 from threading import Thread
 
 from celery.result import allow_join_result
@@ -11,44 +6,28 @@ from flask import jsonify
 
 from flask import Flask
 
-from flask_redis import FlaskRedis
-
 from celery2 import celery
 
 app = Flask(__name__)
 
-"""
-redis = FlaskRedis(app)
-redis_process = subprocess.Popen(['redis-server'])
-command = "rabbitmq-server"
-process = subprocess.Popen(command, shell=True)
-time.sleep(5)
-
-def shutdown_rabbitmq():
-    command2 = 'rabbitmqctl shutdown -n rabbit@mamba-Aspire-A515-52G'
-    subprocess.run(command2, shell=True)
 
 
-def handle_sigint(signum, frame):
-    process.terminate()
-    process.wait()
-    shutdown_rabbitmq()
-    closeCeleryWorkerCommand = "sudo /home/mamba/PycharmProjects/flaskProject/venv/bin/celery multi stop worker1 worker2 worker3"
-    subprocess.run(closeCeleryWorkerCommand, shell=True)
-    os._exit(0)
+receiver = "alexandros0117@gmail.com"
 
 
-signal.signal(signal.SIGINT, handle_sigint)
-
-"""
-
-@app.route('/')
+@app.route("/")
 def preprocessing():
     with app.app_context():
-        x = celery.send_task('app.preprocessing_task', args=(3,))
+        celery.send_task('sedano_to_upload.preprocessing_task', args=(receiver,))
+        return jsonify("ok")
+
+"""@app.route('/')
+def preprocessing():
+    with app.app_context():
+        x = celery.send_task('sedano_to_upload.preprocessing_task', args=(3,))
         with allow_join_result():
             result = x.get()
-        return jsonify(result)
+        return jsonify(result)"""
 
 
 def start_flask_app():

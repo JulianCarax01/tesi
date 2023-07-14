@@ -2,26 +2,26 @@
 cd /home/mamba/Scrivania
 
 
-macchina1: ssh -i "chiavi_per_tesi.pem" ubuntu@ec2-16-171-171-11.eu-north-1.compute.amazonaws.com
+macchina1: ssh -i "/home/mamba/Scrivania/chiavi_per_tesi.pem" ubuntu@ec2-16-171-171-11.eu-north-1.compute.amazonaws.com
 IP: 16.171.171.11
 rabbit@ip-172-31-47-21
 
 
 
-macchina2: ssh -i "chiavi_per_tesi.pem" ubuntu@ec2-13-51-162-114.eu-north-1.compute.amazonaws.com
+macchina2: ssh -i "/home/mamba/Scrivania/chiavi_per_tesi.pem" ubuntu@ec2-13-51-162-114.eu-north-1.compute.amazonaws.com
 IP: 13.51.162.114
 rabbit@ip-172-31-33-143
 
 
-macchina3: ssh -i "chiavi_per_tesi.pem" ubuntu@ec2-13-53-39-10.eu-north-1.compute.amazonaws.com
+macchina3: ssh -i "/home/mamba/Scrivania/chiavi_per_tesi.pem" ubuntu@ec2-13-53-39-10.eu-north-1.compute.amazonaws.com
 IP: 13.53.39.10
 
 
-macchina4: ssh -i "chiavi_per_tesi.pem" ubuntu@ec2-13-51-194-42.eu-north-1.compute.amazonaws.com
+macchina4: ssh -i "/home/mamba/Scrivania/chiavi_per_tesi.pem" ubuntu@ec2-13-51-194-42.eu-north-1.compute.amazonaws.com
 IP: 13.51.194.42
 
 
-proxy: ssh -i "chiavi_per_tesi.pem" ubuntu@ec2-13-48-44-122.eu-north-1.compute.amazonaws.com
+proxy: ssh -i "/home/mamba/Scrivania/chiavi_per_tesi.pem" ubuntu@ec2-13-48-44-122.eu-north-1.compute.amazonaws.com
 IP: 13.48.44.122
 rabbit@ip-172-31-34-218
 

@@ -10,7 +10,6 @@ import subprocess
 import time
 import signal
 import os
-import pandas
 
 from threading import Thread
 
@@ -31,8 +30,7 @@ redis_process = subprocess.Popen(['redis-server'])
 command = "rabbitmq-server"
 process = subprocess.Popen(command, shell=True)
 time.sleep(5)
-dataset = pandas.read_csv("dataset-3.tsv", sep="\t")
-dataset_list = dataset.values.tolist()
+
 
 
 def shutdown_rabbitmq():
@@ -54,10 +52,10 @@ signal.signal(signal.SIGINT, handle_sigint)
 receiver = "alexandros0117@gmail.com"
 
 
-@app.route('/')
+@app.route("/")
 def preprocessing():
     with app.app_context():
-        celery.send_task('sedano.preprocessing_task', args=(dataset_list, receiver,))
+        celery.send_task('sedano.preprocessing_task', args=(receiver,))
         return jsonify("ok")
 
 
