@@ -15,16 +15,19 @@ rabbit@ip-172-31-33-143
 
 macchina3: ssh -i "/home/mamba/Scrivania/chiavi_per_tesi.pem" ubuntu@ec2-13-53-39-10.eu-north-1.compute.amazonaws.com
 IP: 13.53.39.10
+rabbit@ip-172-31-37-141
 
 
 macchina4: ssh -i "/home/mamba/Scrivania/chiavi_per_tesi.pem" ubuntu@ec2-13-51-194-42.eu-north-1.compute.amazonaws.com
 IP: 13.51.194.42
+rabbit@ip-172-31-37-23
 
 
 proxy: ssh -i "/home/mamba/Scrivania/chiavi_per_tesi.pem" ubuntu@ec2-13-48-44-122.eu-north-1.compute.amazonaws.com
 IP: 13.48.44.122
 rabbit@ip-172-31-34-218
 
+sudo rabbitmqctl shutdown -n
 
 app.py<<<
 

@@ -47,11 +47,7 @@ sudo chmod 777 redis.conf
 
  cd home/PycharmProjects/tesi/
 
-touch app.py
-
-nano app.py
-
-app.py<< temp-app.py
+sftp
 
 redis-cli PING (check)
 
@@ -61,7 +57,7 @@ sudo rabbitmqctl shutdown -n rabbit@...
 
 sudo rabbitmq-plugins enable rabbitmq_management
 
-sudo rabbitmq-server
+nohup sudo rabbitmq-server
 
 #altro terminale
 
@@ -79,7 +75,7 @@ sudo rabbitmqctl set_permissions -p / BlackMamba ".*" ".*" ".*"
 
  source venv/bin/activate
 
-celery -A app worker --loglevel=info --concurrency=4
+celery -A sedano_to_upload worker --loglevel=info --concurrency=4
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

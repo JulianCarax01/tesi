@@ -1,7 +1,5 @@
 from threading import Thread
 
-from celery.result import allow_join_result
-
 from flask import jsonify
 
 from flask import Flask
@@ -40,6 +38,3 @@ if __name__ == "__main__":
     flask_thread.start()
     flask_thread.join()
 
-# 1 terminale: redis-server
-#2 terminale sudo rabbitmqctl shutdown -n rabbit@mamba-Aspire-A515-52G ; sudo rabbitmq-server
-# 2 terminale: sudo /home/mamba/PycharmProjects/tesi/venv/bin/python hopelessTry.py
